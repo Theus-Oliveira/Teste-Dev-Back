@@ -1,26 +1,26 @@
-from flask import Flask, request, jsonify, send_from_directory
-from flask_cors import CORS
-import os
+# Projeto API REST com Flask
 
-app = Flask(__name__, static_folder='public')
-CORS(app)  # Enable CORS for all routes
+Este projeto consiste em uma API REST simples com um método GET e um método POST, construída com Flask.
 
-data = {}  # Initialize data storage
+## Pré-requisitos
 
-@app.route('/api', methods=['POST'])
-def handle_post():
-    global data
-    data = request.json
-    return jsonify({'message': 'Dados salvos com sucesso'}), 200
+- Python 3
+- Flask
+- flask_cors
 
-@app.route('/api', methods=['GET'])
-def handle_get():
-    print("Dados enviados para a requisição GET:", data)
-    return jsonify(data), 200
+## Instalação
 
-@app.route('/', methods=['GET'])
-def root():
-    return send_from_directory(app.static_folder, 'index.html')
+1. Clone o repositório para a sua máquina local usando `git clone`.
+2. Navegue até o diretório do projeto.
+3. Crie um ambiente virtual Python (opcional, mas recomendado): `python3 -m venv venv`
+4. Ative o ambiente virtual: 
+   - No Windows: `venv\Scripts\activate`
+   - No Unix ou MacOS: `source venv/bin/activate`
+5. Instale as dependências do projeto com o comando `pip install flask flask_cors`.
 
-if __name__ == '__main__':
-    app.run(debug=True, port=3333)
+## Execução
+
+Para iniciar o servidor, execute o seguinte comando no diretório do projeto:
+
+```bash
+python app.py
